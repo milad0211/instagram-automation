@@ -1,10 +1,11 @@
 import { type Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 
-import {  Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
+import ReactQueryProvider from "@/provider/react-query-provider";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -20,18 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={jakarta.className}>
-           <ThemeProvider
+      <html lang="en">
+        <body className={jakarta.className}>
+          <ThemeProvider
             attribute="class"
             defaultTheme="dark"
-            
             disableTransitionOnChange
           >
-        {children}
-        <Toaster  />
-        </ThemeProvider></body>
-    </html>
+            <ReactQueryProvider> {children}</ReactQueryProvider>
+            <Toaster />
+          </ThemeProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
