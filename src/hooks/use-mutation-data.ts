@@ -23,10 +23,11 @@ export const useMutationData = (
         description: data.data,
       });
 
-      onSettled: async () => {
-        return await client.invalidateQueries({ queryKey: [queryKey] });
-      };
     },
+
+    onSettled: async () => {
+      return await client.invalidateQueries({ queryKey: [queryKey] });
+    }
   });
   return { mutate, isPending };
 };

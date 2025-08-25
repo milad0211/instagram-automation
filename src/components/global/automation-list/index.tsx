@@ -34,7 +34,7 @@ const AutomationList = (props: Props) => {
   ) {
     return (
       <div className="h-[70vh] flex justify-center items-center flex-col gap-y-3">
-        <h3>No Automation </h3>
+        <h3 className="text-lg text-gray-400">No Automation </h3>
         <CreateAutomation />
       </div>
     );
