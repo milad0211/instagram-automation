@@ -6,6 +6,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import ReactQueryProvider from "@/provider/react-query-provider";
+import ReduxProvider from "@/provider/redux-provider";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -28,7 +29,10 @@ export default function RootLayout({
             defaultTheme="dark"
             disableTransitionOnChange
           >
+            <ReduxProvider>
             <ReactQueryProvider> {children}</ReactQueryProvider>
+
+            </ReduxProvider>
             <Toaster />
           </ThemeProvider>
         </body>
